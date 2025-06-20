@@ -1,0 +1,4 @@
+C:\Users\HP\Desktop\csharp\FactoryMethodPatternExample\obj\Debug\net8.0\FactoryMethodPatternExample.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\csharp\FactoryMethodPatternExample\obj\Debug\net8.0\FactoryMethodPatternExample.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\csharp\FactoryMethodPatternExample\obj\Debug\net8.0\FactoryMethodPatternExample.AssemblyInfo.cs
+C:\Users\HP\Desktop\csharp\FactoryMethodPatternExample\obj\Debug\net8.0\FactoryMethodPatternExample.csproj.CoreCompileInputs.cache
