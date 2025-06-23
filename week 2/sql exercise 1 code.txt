@@ -1,0 +1,50 @@
+CREATE TABLE Products (
+    ProductID   NUMBER PRIMARY KEY,
+    ProductName VARCHAR2(50),
+    Category    VARCHAR2(50),
+    Price       NUMBER
+);
+
+INSERT INTO Products VALUES (1, 'Laptop',      'Electronics', 1000);
+INSERT INTO Products VALUES (2, 'Smartphone',  'Electronics', 800);
+INSERT INTO Products VALUES (3, 'Tablet',      'Electronics', 800);
+INSERT INTO Products VALUES (4, 'Headphones',  'Electronics', 200);
+INSERT INTO Products VALUES (5, 'T-shirt',     'Clothing',    50);
+INSERT INTO Products VALUES (6, 'Jacket',      'Clothing',    150);
+INSERT INTO Products VALUES (7, 'Jeans',       'Clothing',    100);
+INSERT INTO Products VALUES (8, 'Sneakers',    'Clothing',    150);
+INSERT INTO Products VALUES (9, 'Blender',     'HomeAppliance', 300);
+INSERT INTO Products VALUES (10, 'Microwave',  'HomeAppliance', 500);
+INSERT INTO Products VALUES (11, 'Toaster',    'HomeAppliance', 300);
+
+COMMIT;
+
+SELECT *
+FROM (
+    SELECT 
+        ProductID,
+        ProductName,
+        Category,
+        Price,
+        ROW_NUMBER() OVER (PARTITION BY Category ORDER BY Price DESC) "RowNum"
+    FROM Products
+) RankedProducts
+WHERE RowNum <= 3;
+
+
+
+
+
+2.Use RANK() and DENSE_RANK()
+
+SELECT 
+    ProductID,
+    ProductName,
+    Category,
+    Price,
+    RANK() OVER (PARTITION BY Category ORDER BY Price DESC) "Rank_Price",
+    DENSE_RANK() OVER (PARTITION BY Category ORDER BY Price DESC) "DenseRank_Price"
+FROM Products;
+
+
+
