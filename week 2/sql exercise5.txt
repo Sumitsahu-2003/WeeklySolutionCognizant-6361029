@@ -1,0 +1,56 @@
+CREATE TABLE Departments (
+    DepartmentID NUMBER PRIMARY KEY,
+    DepartmentName VARCHAR2(100)
+);
+
+CREATE TABLE Employees (
+    EmployeeID NUMBER PRIMARY KEY,
+    FirstName VARCHAR2(50),
+    LastName VARCHAR2(50),
+    DepartmentID NUMBER,
+    Salary NUMBER(10,2),
+    JoinDate DATE,
+    CONSTRAINT fk_dept FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES (1, 'HR');
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES (2, 'Finance');
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES (3, 'IT');
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES (4, 'Marketing');
+
+INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentID, Salary, JoinDate)
+VALUES (1, 'John', 'Doe', 1, 5000.00, DATE '2020-01-15');
+INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentID, Salary, JoinDate)
+VALUES (2, 'Jane', 'Smith', 2, 6000.00, DATE '2019-03-22');
+INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentID, Salary, JoinDate)
+VALUES (3, 'Michael', 'Johnson', 3, 7000.00, DATE '2018-07-30');
+INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentID, Salary, JoinDate)
+VALUES (4, 'Emily', 'Davis', 4, 5500.00, DATE '2021-11-05');
+COMMIT;
+
+CREATE OR REPLACE PROCEDURE get_employee_count_by_dept (
+    p_department_id IN NUMBER,
+    p_count OUT NUMBER
+)
+AS
+BEGIN
+    SELECT COUNT(*)
+    INTO p_count
+    FROM Employees
+    WHERE DepartmentID = p_department_id;
+END;
+/
+
+-- Test for valid department (e.g., HR - ID 1)
+VARIABLE emp_count NUMBER;
+EXEC get_employee_count_by_dept(1, :emp_count);
+PRINT emp_count;
+
+-- Test for invalid department (e.g., ID 99)
+EXEC get_employee_count_by_dept(99, :emp_count);
+PRINT emp_count;
+
+-- Test for Finance department (ID 2)
+EXEC get_employee_count_by_dept(2, :emp_count);
+PRINT emp_count;
+
+

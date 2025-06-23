@@ -1,0 +1,43 @@
+
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR2(100)
+);
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR2(50),
+    LastName VARCHAR2(50),
+    DepartmentID INT,
+    Salary NUMBER(10,2),
+    JoinDate DATE,
+    CONSTRAINT fk_dept FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+-- Insert departments
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES (1, 'HR');
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES (2, 'Finance');
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES (3, 'IT');
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES (4, 'Marketing');
+
+-- Insert employees
+INSERT INTO Employees VALUES (1, 'John', 'Doe', 1, 5000.00, DATE '2020-01-15');
+INSERT INTO Employees VALUES (2, 'Jane', 'Smith', 2, 6000.00, DATE '2019-03-22');
+INSERT INTO Employees VALUES (3, 'Michael', 'Johnson', 3, 7000.00, DATE '2018-07-30');
+INSERT INTO Employees VALUES (4, 'Emily', 'Davis', 4, 5500.00, DATE '2021-11-05');
+
+COMMIT;
+
+CREATE OR REPLACE PROCEDURE sp_GetEmployeesByDepartment (
+    p_DepartmentID IN Departments.DepartmentID%TYPE
+)
+AS
+    v_cursor SYS_REFCURSOR;
+BEGIN
+    OPEN v_cursor FOR
+        SELECT e.EmployeeID, e.FirstName, e.LastName, d.DepartmentName, e.Salary, e.JoinDate
+        FROM Employees e
+        JOIN Departments d ON e.DepartmentID = d.DepartmentID
+        WHERE e.DepartmentID = p_DepartmentID;
+    
+    DBMS_SQL.RETURN_RESULT(v_cursor); 
+END;
+/

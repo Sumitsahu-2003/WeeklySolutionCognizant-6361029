@@ -1,0 +1,95 @@
+
+ PRODUCTID PRODUCTNAME
+---------- --------------------------------------------------
+CATEGORY                                                PRICE Rank_Price
+-------------------------------------------------- ---------- ----------
+DenseRank_Price
+---------------
+         6 Jacket
+Clothing                                                  150         1
+              1
+
+         8 Sneakers
+Clothing                                                  150         1
+              1
+
+ PRODUCTID PRODUCTNAME
+---------- --------------------------------------------------
+CATEGORY                                                PRICE Rank_Price
+-------------------------------------------------- ---------- ----------
+DenseRank_Price
+---------------
+
+         7 Jeans
+Clothing                                                  100         3
+              2
+
+         5 T-shirt
+Clothing                                                   50         4
+
+ PRODUCTID PRODUCTNAME
+---------- --------------------------------------------------
+CATEGORY                                                PRICE Rank_Price
+-------------------------------------------------- ---------- ----------
+DenseRank_Price
+---------------
+              3
+
+         1 Laptop
+Electronics                                              1000         1
+              1
+
+         2 Smartphone
+
+ PRODUCTID PRODUCTNAME
+---------- --------------------------------------------------
+CATEGORY                                                PRICE Rank_Price
+-------------------------------------------------- ---------- ----------
+DenseRank_Price
+---------------
+Electronics                                               800         2
+              2
+
+         3 Tablet
+Electronics                                               800         2
+              2
+
+
+ PRODUCTID PRODUCTNAME
+---------- --------------------------------------------------
+CATEGORY                                                PRICE Rank_Price
+-------------------------------------------------- ---------- ----------
+DenseRank_Price
+---------------
+         4 Headphones
+Electronics                                               200         4
+              3
+
+        10 Microwave
+HomeAppliance                                             500         1
+              1
+
+ PRODUCTID PRODUCTNAME
+---------- --------------------------------------------------
+CATEGORY                                                PRICE Rank_Price
+-------------------------------------------------- ---------- ----------
+DenseRank_Price
+---------------
+
+        11 Toaster
+HomeAppliance                                             300         2
+              2
+
+         9 Blender
+HomeAppliance                                             300         2
+
+ PRODUCTID PRODUCTNAME
+---------- --------------------------------------------------
+CATEGORY                                                PRICE Rank_Price
+-------------------------------------------------- ---------- ----------
+DenseRank_Price
+---------------
+              2
+
+
+11 rows selected.
